@@ -854,6 +854,6 @@ spec:
   selector:
    app: ts-food-mongo
 
-# NOTE: Jaeger deployment and services removed.
-# SREGym conductor creates ExternalName services to route traces
+# NOTE: Jaeger deployment and services are intentionally removed here.
+# The Train Ticket Helm chart creates ExternalName services to route traces
 # to the centralized Jaeger in the 'observe' namespace.
