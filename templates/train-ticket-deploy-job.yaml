@@ -7,6 +7,23 @@ spec:
   template:
     spec:
       serviceAccountName: train-ticket-deploy-sa
+      initContainers:
+        - name: create-jaeger-services
+          image: bitnami/kubectl:latest
+          command:
+            - /bin/sh
+            - -c
+            - |
+              for svc in jaeger jaeger-agent jaeger-collector jaeger-query; do
+                if kubectl get svc $svc -n {{ .Values.namespace }} > /dev/null 2>&1; then
+                  echo "Service $svc already exists, skipping."
+                else
+                  kubectl create service externalname $svc \
+                    --external-name=otel-collector.observe.svc.cluster.local \
+                    -n {{ .Values.namespace }}
+                  echo "Created service $svc"
+                fi
+              done
       containers:
         - name: train-ticket-deploy
           image: {{ .Values.job.image }}
