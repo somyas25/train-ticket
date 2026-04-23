@@ -167,7 +167,7 @@ function update_tt_dp_cm {
   nacosCM="$1"
   rabbitmqCM="$2"
 
-  cp $dp_sample_yaml $dp_yaml
+  # cp $dp_sample_yaml $dp_yaml
 
   if [[ "$(uname)" == "Darwin" ]]; then
     sed -i "" "s/nacos/${nacosCM}/g" $dp_yaml
