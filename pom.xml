@@ -167,6 +167,12 @@
         <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
             <artifactId>opentelemetry-spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.opentelemetry.contrib</groupId>
+                    <artifactId>opentelemetry-azure-resources</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
