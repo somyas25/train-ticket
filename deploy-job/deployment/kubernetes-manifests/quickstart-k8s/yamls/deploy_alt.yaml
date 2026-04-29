@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ts-admin-basic-info-service
-          image: ghcr.io/sregym/ts-admin-basic-info-service-test:otel
+          image: somyas3/ts-admin-basic-info-service:otel
           imagePullPolicy: IfNotPresent
           env:
             - name: NODE_IP
